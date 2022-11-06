@@ -69,15 +69,27 @@ struct BottomSheetContent: View {
             HStack {
                 Spacer()
             }
-            Spacer()
-                .frame(height: 1000)
-            
+            ScrollView(.vertical, showsIndicators: false) {
+                // TODO: Add content
+                
+                    
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                        Text("test")
+                    
+
+                
+            }
         }
         .background(BlurView(style: .systemMaterial))
         .cornerRadius(15)
         
-        ScrollView(.vertical, showsIndicators: false) {
-            // TODO: Add content
-        }
+        
     }
 }

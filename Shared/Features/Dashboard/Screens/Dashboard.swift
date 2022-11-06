@@ -12,11 +12,11 @@ struct Dashboard: View {
     @State var offset: CGFloat = 0
     var body: some View {
         ZStack {
-            Gradients.dayBackgroundGradient
-                .ignoresSafeArea()
+            backgroundColor
             VStack(spacing: 5) {
                 temperature
                 temperatureDescription
+                circularViews
                 Spacer()
             }
         }
@@ -27,14 +27,17 @@ struct Dashboard: View {
 extension Dashboard {
     // TODO: Remove mocks with API
     private var temperature: some View {
-        VStack(spacing: 0) {
+        VStack {
             Image("sun")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 220)
             Text("8°")
                 .font(.system(size: 88))
                 .fontWeight(.medium)
-            
-                .padding(.top, -80)
+                .padding(.top, -60)
         }
+        .padding(.top, -10)
     }
     
     private var temperatureDescription: some View {
@@ -49,5 +52,19 @@ extension Dashboard {
                 .font(.system(size: 18))
                 .fontWeight(.semibold)
         }
+    }
+    
+    private var circularViews: some View {
+        HStack(spacing: 30) {
+            CircularProgress(progressValue: 1015, minValue: 950, maxValue: 1050)
+            CircularProgress(progressValue: 87, minValue: 0, maxValue: 100)
+            CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
+        }
+        .padding()
+    }
+    
+    private var backgroundColor: some View {
+        Gradients.dayBackgroundGradient
+            .ignoresSafeArea()
     }
 }
