@@ -11,6 +11,12 @@
 		3D10FF1E2917080C009C9760 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FF1D2917080C009C9760 /* CircularProgress.swift */; };
 		3D10FF2129170E6D009C9760 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FF2029170E6D009C9760 /* Colors.swift */; };
 		3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FF22291710E9009C9760 /* CircularProgressModel.swift */; };
+		3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */; };
+		3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D042918105C004B56C4 /* HttpClient.swift */; };
+		3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D062918107D004B56C4 /* HttpRequest.swift */; };
+		3D8E1D092918109B004B56C4 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D082918109B004B56C4 /* HttpMethod.swift */; };
+		3D8E1D0B29181252004B56C4 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0A29181252004B56C4 /* DashboardViewModel.swift */; };
+		3D8E1D0E291812AF004B56C4 /* DashboardNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0D291812AF004B56C4 /* DashboardNetworkService.swift */; };
 		3DACF37429119EA100554177 /* wetempApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF37329119EA100554177 /* wetempApp.swift */; };
 		3DACF37629119EA100554177 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF37529119EA100554177 /* ContentView.swift */; };
 		3DACF37829119EA300554177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DACF37729119EA300554177 /* Assets.xcassets */; };
@@ -27,6 +33,12 @@
 		3D10FF1D2917080C009C9760 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		3D10FF2029170E6D009C9760 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3D10FF22291710E9009C9760 /* CircularProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressModel.swift; sourceTree = "<group>"; };
+		3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
+		3D8E1D042918105C004B56C4 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		3D8E1D062918107D004B56C4 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		3D8E1D082918109B004B56C4 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		3D8E1D0A29181252004B56C4 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		3D8E1D0D291812AF004B56C4 /* DashboardNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardNetworkService.swift; sourceTree = "<group>"; };
 		3DACF37029119EA100554177 /* wetemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wetemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DACF37329119EA100554177 /* wetempApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wetempApp.swift; sourceTree = "<group>"; };
 		3DACF37529119EA100554177 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +70,25 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3D8E1D0129180F97004B56C4 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */,
+				3D8E1D042918105C004B56C4 /* HttpClient.swift */,
+				3D8E1D062918107D004B56C4 /* HttpRequest.swift */,
+				3D8E1D082918109B004B56C4 /* HttpMethod.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		3D8E1D0C2918128C004B56C4 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				3D8E1D0D291812AF004B56C4 /* DashboardNetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		3DACF36729119EA100554177 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +108,8 @@
 		3DACF37229119EA100554177 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3D8E1D0C2918128C004B56C4 /* NetworkService */,
+				3D8E1D0129180F97004B56C4 /* API */,
 				3DACF39529130EA200554177 /* SharedUI */,
 				3DACF3902911A47400554177 /* Helpers */,
 				3DACF38B2911A0CE00554177 /* Extensions */,
@@ -136,6 +169,7 @@
 		3DACF3892911A0A400554177 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3D8E1D0A29181252004B56C4 /* DashboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -249,12 +283,18 @@
 				3DACF38F2911A3D800554177 /* Gradients.swift in Sources */,
 				3D10FF2129170E6D009C9760 /* Colors.swift in Sources */,
 				3DACF39729130EBA00554177 /* BottomSheet.swift in Sources */,
+				3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */,
 				3DACF38D2911A11600554177 /* Color+Hex.swift in Sources */,
+				3D8E1D0B29181252004B56C4 /* DashboardViewModel.swift in Sources */,
+				3D8E1D092918109B004B56C4 /* HttpMethod.swift in Sources */,
 				3DACF3882911A0A000554177 /* Dashboard.swift in Sources */,
+				3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */,
 				3DACF37429119EA100554177 /* wetempApp.swift in Sources */,
 				3D10FF1E2917080C009C9760 /* CircularProgress.swift in Sources */,
 				3DACF3922911A48300554177 /* Constants.swift in Sources */,
+				3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */,
 				3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */,
+				3D8E1D0E291812AF004B56C4 /* DashboardNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
