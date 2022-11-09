@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Dashboard: View {
+    @StateObject var viewModel = DashboardViewModelImpl()
+    
     @State var sheet: Bool = true
     @State var offset: CGFloat = 0
     var body: some View {
@@ -20,6 +22,20 @@ struct Dashboard: View {
                 Spacer()
             }
         }
+        .customSheet(isPresented: $viewModel.isBottomSheetEnabled, detents: $viewModel.detents, backgroundColor: .white, header: {
+            Capsule()
+                .fill(Color.gray.opacity(0.5))
+                .frame(width: 50, height: 5)
+                .padding(.top)
+                .padding(.bottom, 5)
+        }, scrollViewContent: {
+            VStack {
+                HStack {
+                    Spacer()
+                }
+                Spacer()
+            }
+        }, staticContent: {})
         .foregroundColor(.white)
     }
 }
