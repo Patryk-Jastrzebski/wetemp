@@ -26,6 +26,13 @@
 		3DACF38F2911A3D800554177 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF38E2911A3D800554177 /* Gradients.swift */; };
 		3DACF3922911A48300554177 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF3912911A48300554177 /* Constants.swift */; };
 		3DACF39729130EBA00554177 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF39629130EBA00554177 /* BottomSheet.swift */; };
+		3DC1BDBB29193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB529193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift */; };
+		3DC1BDBC29193C1E0078FC3A /* CustomHeightDetent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB629193C1E0078FC3A /* CustomHeightDetent.swift */; };
+		3DC1BDBD29193C1E0078FC3A /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB729193C1E0078FC3A /* CustomSheet.swift */; };
+		3DC1BDBE29193C1E0078FC3A /* View+CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB829193C1E0078FC3A /* View+CustomSheet.swift */; };
+		3DC1BDBF29193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB929193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift */; };
+		3DC1BDC029193C1E0078FC3A /* CustomHeightBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDBA29193C1E0078FC3A /* CustomHeightBottomSheet.swift */; };
+		3DC1BDC329193C470078FC3A /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 3DC1BDC229193C470078FC3A /* Introspect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +56,12 @@
 		3DACF38E2911A3D800554177 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		3DACF3912911A48300554177 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3DACF39629130EBA00554177 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		3DC1BDB529193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeightBottomSheetHandler.swift; sourceTree = "<group>"; };
+		3DC1BDB629193C1E0078FC3A /* CustomHeightDetent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeightDetent.swift; sourceTree = "<group>"; };
+		3DC1BDB729193C1E0078FC3A /* CustomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
+		3DC1BDB829193C1E0078FC3A /* View+CustomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+CustomSheet.swift"; sourceTree = "<group>"; };
+		3DC1BDB929193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeightBottomSheetViewModel.swift; sourceTree = "<group>"; };
+		3DC1BDBA29193C1E0078FC3A /* CustomHeightBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeightBottomSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DC1BDC329193C470078FC3A /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,9 +217,23 @@
 		3DACF39529130EA200554177 /* SharedUI */ = {
 			isa = PBXGroup;
 			children = (
+				3DC1BDB429193BFB0078FC3A /* CustomBottomSheet */,
 				3DACF39629130EBA00554177 /* BottomSheet.swift */,
 			);
 			path = SharedUI;
+			sourceTree = "<group>";
+		};
+		3DC1BDB429193BFB0078FC3A /* CustomBottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				3DC1BDBA29193C1E0078FC3A /* CustomHeightBottomSheet.swift */,
+				3DC1BDB529193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift */,
+				3DC1BDB929193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift */,
+				3DC1BDB629193C1E0078FC3A /* CustomHeightDetent.swift */,
+				3DC1BDB729193C1E0078FC3A /* CustomSheet.swift */,
+				3DC1BDB829193C1E0078FC3A /* View+CustomSheet.swift */,
+			);
+			path = CustomBottomSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +252,9 @@
 			dependencies = (
 			);
 			name = wetemp;
+			packageProductDependencies = (
+				3DC1BDC229193C470078FC3A /* Introspect */,
+			);
 			productName = wetemp;
 			productReference = 3DACF37029119EA100554177 /* wetemp.app */;
 			productType = "com.apple.product-type.application";
@@ -252,6 +283,9 @@
 				Base,
 			);
 			mainGroup = 3DACF36729119EA100554177;
+			packageReferences = (
+				3DC1BDC129193C470078FC3A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+			);
 			productRefGroup = 3DACF37129119EA100554177 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,9 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DC1BDBE29193C1E0078FC3A /* View+CustomSheet.swift in Sources */,
+				3DC1BDBD29193C1E0078FC3A /* CustomSheet.swift in Sources */,
 				3DACF37629119EA100554177 /* ContentView.swift in Sources */,
 				3D10FF002916B767009C9760 /* BlurView.swift in Sources */,
 				3DACF38F2911A3D800554177 /* Gradients.swift in Sources */,
+				3DC1BDBB29193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift in Sources */,
 				3D10FF2129170E6D009C9760 /* Colors.swift in Sources */,
 				3DACF39729130EBA00554177 /* BottomSheet.swift in Sources */,
 				3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */,
@@ -288,10 +325,13 @@
 				3D8E1D0B29181252004B56C4 /* DashboardViewModel.swift in Sources */,
 				3D8E1D092918109B004B56C4 /* HttpMethod.swift in Sources */,
 				3DACF3882911A0A000554177 /* Dashboard.swift in Sources */,
+				3DC1BDC029193C1E0078FC3A /* CustomHeightBottomSheet.swift in Sources */,
+				3DC1BDBF29193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift in Sources */,
 				3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */,
 				3DACF37429119EA100554177 /* wetempApp.swift in Sources */,
 				3D10FF1E2917080C009C9760 /* CircularProgress.swift in Sources */,
 				3DACF3922911A48300554177 /* Constants.swift in Sources */,
+				3DC1BDBC29193C1E0078FC3A /* CustomHeightDetent.swift in Sources */,
 				3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */,
 				3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */,
 				3D8E1D0E291812AF004B56C4 /* DashboardNetworkService.swift in Sources */,
@@ -495,6 +535,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DC1BDC129193C470078FC3A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DC1BDC229193C470078FC3A /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DC1BDC129193C470078FC3A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3DACF36829119EA100554177 /* Project object */;
 }
