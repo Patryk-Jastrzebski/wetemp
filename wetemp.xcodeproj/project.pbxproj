@@ -11,6 +11,10 @@
 		3D10FF1E2917080C009C9760 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FF1D2917080C009C9760 /* CircularProgress.swift */; };
 		3D10FF2129170E6D009C9760 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FF2029170E6D009C9760 /* Colors.swift */; };
 		3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D10FF22291710E9009C9760 /* CircularProgressModel.swift */; };
+		3D5B8AA2291C1C5700D29EEF /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B8AA1291C1C5700D29EEF /* ChartView.swift */; };
+		3D5B8AA5291C303200D29EEF /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5B8AA4291C303200D29EEF /* SwiftUICharts */; };
+		3D5B8AA7291C3AD100D29EEF /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B8AA6291C3AD100D29EEF /* Description.swift */; };
+		3D5B8AAA291C42CE00D29EEF /* HorizontalTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B8AA9291C42CE00D29EEF /* HorizontalTemperature.swift */; };
 		3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */; };
 		3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D042918105C004B56C4 /* HttpClient.swift */; };
 		3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D062918107D004B56C4 /* HttpRequest.swift */; };
@@ -40,6 +44,9 @@
 		3D10FF1D2917080C009C9760 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		3D10FF2029170E6D009C9760 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		3D10FF22291710E9009C9760 /* CircularProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressModel.swift; sourceTree = "<group>"; };
+		3D5B8AA1291C1C5700D29EEF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		3D5B8AA6291C3AD100D29EEF /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
+		3D5B8AA9291C42CE00D29EEF /* HorizontalTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTemperature.swift; sourceTree = "<group>"; };
 		3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
 		3D8E1D042918105C004B56C4 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		3D8E1D062918107D004B56C4 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DC1BDC329193C470078FC3A /* Introspect in Frameworks */,
+				3D5B8AA5291C303200D29EEF /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +90,23 @@
 				3D10FF22291710E9009C9760 /* CircularProgressModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3D5B8AA0291C1C4000D29EEF /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				3D5B8AA1291C1C5700D29EEF /* ChartView.swift */,
+				3D5B8AA6291C3AD100D29EEF /* Description.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		3D5B8AA8291C42BB00D29EEF /* TemperatureScroll */ = {
+			isa = PBXGroup;
+			children = (
+				3D5B8AA9291C42CE00D29EEF /* HorizontalTemperature.swift */,
+			);
+			path = TemperatureScroll;
 			sourceTree = "<group>";
 		};
 		3D8E1D0129180F97004B56C4 /* API */ = {
@@ -217,6 +242,8 @@
 		3DACF39529130EA200554177 /* SharedUI */ = {
 			isa = PBXGroup;
 			children = (
+				3D5B8AA8291C42BB00D29EEF /* TemperatureScroll */,
+				3D5B8AA0291C1C4000D29EEF /* Chart */,
 				3DC1BDB429193BFB0078FC3A /* CustomBottomSheet */,
 				3DACF39629130EBA00554177 /* BottomSheet.swift */,
 			);
@@ -254,6 +281,7 @@
 			name = wetemp;
 			packageProductDependencies = (
 				3DC1BDC229193C470078FC3A /* Introspect */,
+				3D5B8AA4291C303200D29EEF /* SwiftUICharts */,
 			);
 			productName = wetemp;
 			productReference = 3DACF37029119EA100554177 /* wetemp.app */;
@@ -285,6 +313,7 @@
 			mainGroup = 3DACF36729119EA100554177;
 			packageReferences = (
 				3DC1BDC129193C470078FC3A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				3D5B8AA3291C303200D29EEF /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 3DACF37129119EA100554177 /* Products */;
 			projectDirPath = "";
@@ -324,9 +353,11 @@
 				3DACF38D2911A11600554177 /* Color+Hex.swift in Sources */,
 				3D8E1D0B29181252004B56C4 /* DashboardViewModel.swift in Sources */,
 				3D8E1D092918109B004B56C4 /* HttpMethod.swift in Sources */,
+				3D5B8AA7291C3AD100D29EEF /* Description.swift in Sources */,
 				3DACF3882911A0A000554177 /* Dashboard.swift in Sources */,
 				3DC1BDC029193C1E0078FC3A /* CustomHeightBottomSheet.swift in Sources */,
 				3DC1BDBF29193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift in Sources */,
+				3D5B8AAA291C42CE00D29EEF /* HorizontalTemperature.swift in Sources */,
 				3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */,
 				3DACF37429119EA100554177 /* wetempApp.swift in Sources */,
 				3D10FF1E2917080C009C9760 /* CircularProgress.swift in Sources */,
@@ -335,6 +366,7 @@
 				3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */,
 				3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */,
 				3D8E1D0E291812AF004B56C4 /* DashboardNetworkService.swift in Sources */,
+				3D5B8AA2291C1C5700D29EEF /* ChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +569,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3D5B8AA3291C303200D29EEF /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3DC1BDC129193C470078FC3A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
@@ -548,6 +588,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3D5B8AA4291C303200D29EEF /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3D5B8AA3291C303200D29EEF /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
 		3DC1BDC229193C470078FC3A /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3DC1BDC129193C470078FC3A /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;

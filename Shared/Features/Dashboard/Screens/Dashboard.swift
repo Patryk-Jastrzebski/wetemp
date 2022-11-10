@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct Dashboard: View {
     @StateObject var viewModel = DashboardViewModelImpl()
@@ -22,6 +23,7 @@ struct Dashboard: View {
                 Spacer()
             }
         }
+        .foregroundColor(.white)
         .customSheet(isPresented: $viewModel.isBottomSheetEnabled, detents: $viewModel.detents, backgroundColor: .white, header: {
             Capsule()
                 .fill(Color.gray.opacity(0.5))
@@ -29,14 +31,12 @@ struct Dashboard: View {
                 .padding(.top)
                 .padding(.bottom, 5)
         }, scrollViewContent: {
-            VStack {
-                HStack {
-                    Spacer()
-                }
-                Spacer()
-            }
-        }, staticContent: {})
-        .foregroundColor(.white)
+            HorizontalTemperature(temps: viewModel.temperaturesBottomSheet)
+            ChartView()
+        }, staticContent: {
+            
+        })
+        
     }
 }
 
