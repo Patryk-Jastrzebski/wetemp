@@ -13,6 +13,7 @@ protocol DashboardViewModel {
 
 final class DashboardViewModelImpl: ObservableObject, DashboardViewModel {
     @Published var isBottomSheetEnabled = true
+    @Published var temperautreData: Temperature = .base
     @Published var temperaturesBottomSheet: [BottomTemperatureModel] = []
     var detents: [CustomHeightDetent] = [.smallHome, .medium]
     

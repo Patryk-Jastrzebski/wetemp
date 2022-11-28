@@ -22,6 +22,7 @@ struct Dashboard: View {
                 circularViews
                 Spacer()
             }
+            navigation
         }
         .foregroundColor(.white)
         .customSheet(isPresented: $viewModel.isBottomSheetEnabled, detents: $viewModel.detents, backgroundColor: .white, header: {
@@ -32,15 +33,26 @@ struct Dashboard: View {
                 .padding(.bottom, 5)
         }, scrollViewContent: {
             HorizontalTemperature(temps: viewModel.temperaturesBottomSheet)
+                .padding(.leading, 5)
             ChartView()
-        }, staticContent: {
-            
-        })
-        
+        }, staticContent: {})
     }
 }
 
 extension Dashboard {
+    private var navigation: some View {
+        VStack {
+            HStack {
+                settings
+                Spacer()
+                search
+            }
+            .padding(20)
+            .font(.system(size: 22))
+            Spacer()
+        }
+    }
+    
     // TODO: Remove mocks with API
     private var temperature: some View {
         VStack {
@@ -82,5 +94,22 @@ extension Dashboard {
     private var backgroundColor: some View {
         Gradients.dayBackgroundGradient
             .ignoresSafeArea()
+    }
+    
+    private var settings: some View {
+        NavigationLink {
+            EmptyView()
+        } label: {
+            Image(systemName: "gear")
+        }
+    }
+    
+    private var search: some View {
+        NavigationLink {
+            EmptyView()
+        } label: {
+            Image(systemName: "magnifyingglass")
+        }
+
     }
 }

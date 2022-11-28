@@ -34,7 +34,6 @@ final class HttpClientImpl: HttpClient {
             throw AppErrors.httpError
         }
         urlComponents.queryItems = urlComponents.queryItems != nil ? urlComponents.queryItems : [URLQueryItem]()
-
         // TODO: if language will be added to api -
         // urlComponents.queryItems?.append(URLQueryItem(name: "language", value: locale.language.languageCode?.identifier))
 
