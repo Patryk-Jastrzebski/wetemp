@@ -28,9 +28,6 @@ struct Dashboard: View {
         .task {
            await viewModel.fetchData()
         }
-        .sheet(isPresented: $viewModel.mapSheet) {
-            MapView()
-        }
         .foregroundColor(.white)
         .customSheet(isPresented: $viewModel.isBottomSheedMapEnabled, detents: $viewModel.mapDetents, backgroundColor: .white, header: {
             Capsule()
