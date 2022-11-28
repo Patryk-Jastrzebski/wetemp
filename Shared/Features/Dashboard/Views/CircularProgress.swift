@@ -8,47 +8,49 @@
 import SwiftUI
 
 struct CircularProgress: View {
-    let progressValue: Float
+    let progressValue: Float?
     let minValue: Float
     let maxValue: Float
     
     var body: some View {
-        VStack(spacing: 0) {
-            ZStack {
-                Circle()
-                    .trim(from: Constants.minValue, to: Constants.maxValue)
-                    .stroke(style: StrokeStyle(lineWidth: Constants.circleWidth, lineCap: .round, lineJoin: .round))
-                    .foregroundColor(Colors.backgroundProgress)
-                    .rotationEffect(Angle(degrees: Constants.rotationValue))
-                Circle()
-                    .trim(from: Constants.minValue, to: getProgress())
-                    .stroke(style: StrokeStyle(lineWidth: Constants.circleWidth, lineCap: .round, lineJoin: .round))
-                    .foregroundColor(Colors.foregroundProgress)
-                    .rotationEffect(Angle(degrees: Constants.rotationValue))
-                Text("\(progressValue, specifier: "%.0f")")
-                    .font(.system(size: Constants.fontSize))
-                    .fontWeight(.bold)
-                    .foregroundColor(Colors.foregroundProgress)
+        if let progressValue = progressValue {
+            VStack(spacing: 0) {
+                ZStack {
+                    Circle()
+                        .trim(from: Constants.minValue, to: Constants.maxValue)
+                        .stroke(style: StrokeStyle(lineWidth: Constants.circleWidth, lineCap: .round, lineJoin: .round))
+                        .foregroundColor(Colors.backgroundProgress)
+                        .rotationEffect(Angle(degrees: Constants.rotationValue))
+                    Circle()
+                        .trim(from: Constants.minValue, to: getProgress(progressValue))
+                        .stroke(style: StrokeStyle(lineWidth: Constants.circleWidth, lineCap: .round, lineJoin: .round))
+                        .foregroundColor(Colors.foregroundProgress)
+                        .rotationEffect(Angle(degrees: Constants.rotationValue))
+                    Text("\(progressValue, specifier: "%.0f")")
+                        .font(.system(size: Constants.fontSize))
+                        .fontWeight(.bold)
+                        .foregroundColor(Colors.foregroundProgress)
+                }
+                .frame(width: Constants.viewWidth)
+                HStack {
+                    Text("\(minValue, specifier: "%.0f")")
+                    Spacer()
+                        .frame(width: Constants.textSpacing)
+                    Text("\(maxValue, specifier: "%.0f")")
+                }
+                .font(.system(size: Constants.fontSize))
+                .fontWeight(.bold)
+                .padding(.top, Constants.fixTopSpacing)
+                .foregroundColor(Colors.foregroundProgress)
             }
-            .frame(width: Constants.viewWidth)
-            HStack {
-                Text("\(minValue, specifier: "%.0f")")
-                Spacer()
-                    .frame(width: Constants.textSpacing)
-                Text("\(maxValue, specifier: "%.0f")")
-            }
-            .font(.system(size: Constants.fontSize))
-            .fontWeight(.bold)
-            .padding(.top, Constants.fixTopSpacing)
-            .foregroundColor(Colors.foregroundProgress)
         }
     }
 }
 
 extension CircularProgress {
-    private func getProgress() -> CGFloat {
+    private func getProgress(_ progress: Float) -> CGFloat {
         let interval = maxValue - minValue
-        let currentValue = progressValue - minValue
+        let currentValue = progress - minValue
         let percentageValue = (currentValue * 100) / interval
         let result = (Float(Constants.maxValue) * percentageValue) / 100
         return CGFloat(result)

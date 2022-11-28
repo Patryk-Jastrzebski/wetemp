@@ -12,12 +12,17 @@ protocol DashboardViewModel {
 }
 
 final class DashboardViewModelImpl: ObservableObject, DashboardViewModel {
+    enum ViewState {
+        case loading, loaded, error
+    }
+    
     @Published var isBottomSheetEnabled = true
     @Published var isBottomSheedMapEnabled = false
     @Published var temperautreData: Temperature = .base
     @Published var temperatureIcon: Image = Icons.rainSun
     @Published var temperaturesBottomSheet: [BottomTemperatureModel] = []
     @Published var mapSheet: Bool = false
+    @Published var viewState: ViewState = .loading
     var detents: [CustomHeightDetent] = [.smallHome, .medium]
     var mapDetents: [CustomHeightDetent] = [.zero, .mapDashboard]
     
@@ -31,30 +36,15 @@ final class DashboardViewModelImpl: ObservableObject, DashboardViewModel {
     @MainActor
     func fetchData() async {
         do {
+            viewState = .loading
             let data = try await networkService.fetchTemperatureData()
-            withAnimation(.interpolatingSpring(stiffness: 100, damping: 15)) {
+            viewState = .loaded
+            withAnimation(.interpolatingSpring(stiffness: 100, damping: 30)) {
                 temperautreData = data
-                temperatureIcon = getTemperatureImage()
             }
         } catch {
+            viewState = .error
             print(error.localizedDescription)
-        }
-    }
-    
-    private func getTemperatureImage() -> Image {
-        switch temperautreData.isRaining {
-        case .yes:
-            if temperautreData.temperature >= "10" {
-                return Icons.rainSun
-            } else {
-                return Icons.rain
-            }
-        case .no:
-            if temperautreData.temperature >= "10" {
-                return Icons.sun
-            } else {
-                return Icons.cloudy
-            }
         }
     }
     
