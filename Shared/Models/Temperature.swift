@@ -8,13 +8,13 @@
 import Foundation
 
 struct Temperature: Decodable {
-    static let base = Temperature(stationId: 0, stationName: "", time: "", date: "", isRaining: "", temperature: "", pressure: 0.0, humidity: 0, localization: "", lat: 0.0, lon: 0.0, description: "")
+    static let base = Temperature(stationId: 0, stationName: "", time: "", date: "", isRaining: .yes, temperature: "", pressure: 0.0, humidity: 0, localization: "", lat: 0.0, lon: 0.0, description: "")
     
     let stationId: Int
     let stationName: String
     let time: String
     let date: String
-    let isRaining: String
+    let isRaining: Raining
     let temperature: String
     let pressure: Double
     let humidity: Int
@@ -44,7 +44,7 @@ struct Temperature: Decodable {
         stationName = try container.decode(String.self, forKey: .stationName)
         time = try container.decode(String.self, forKey: .time)
         date = try container.decode(String.self, forKey: .date)
-        isRaining = try container.decode(String.self, forKey: .isRaining)
+        isRaining = try container.decode(Raining.self, forKey: .isRaining)
         temperature = try container.decode(String.self, forKey: .temperature)
         pressure = try container.decode(Double.self, forKey: .pressure)
         humidity = try container.decode(Int.self, forKey: .humidity)
@@ -58,7 +58,7 @@ struct Temperature: Decodable {
          stationName: String,
          time: String,
          date: String,
-         isRaining: String,
+         isRaining: Raining,
          temperature: String,
          pressure: Double,
          humidity: Int,
@@ -80,4 +80,9 @@ struct Temperature: Decodable {
         self.lon = lon
         self.description = description
     }
+}
+
+enum Raining: String, Decodable {
+    case yes = "Yes"
+    case no = "No"
 }

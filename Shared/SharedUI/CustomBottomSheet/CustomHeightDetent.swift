@@ -4,6 +4,7 @@ enum CustomHeightDetent: Equatable {
     case zero
     case small
     case medium
+    case mapDashboard
     case large
     case custom(CGFloat)
     case smallHome
@@ -20,6 +21,8 @@ enum CustomHeightDetent: Equatable {
             return 0
         case .medium:
             return UIScreen.main.bounds.height * 0.59
+        case .mapDashboard:
+            return UIScreen.main.bounds.height * 0.65
         case .large:
             return UIScreen.main.bounds.height * 0.95
         }

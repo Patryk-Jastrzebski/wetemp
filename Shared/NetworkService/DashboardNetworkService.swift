@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DashboardNetworkService {
-    func fetchTemperatureData() async throws
+    func fetchTemperatureData() async throws -> Temperature
 }
 
 final class DashboardNetworkServiceImpl: DashboardNetworkService {
@@ -20,9 +20,18 @@ final class DashboardNetworkServiceImpl: DashboardNetworkService {
         self.httpClient = httpClient
     }
 
-    func fetchTemperatureData() async throws {
-        let url = BaseUrl(featurePath: .temperature)
-        let request = HttpRequest(url: url, method: .get)
-        // TODO: Implement if api model will be ready
+    func fetchTemperatureData() async throws -> Temperature {
+        let parameters: Parameters = [
+            "station": 1,
+            "t_unit": "f",
+            "p_unit": "p"
+        ]
+        let url = BaseUrl(featurePath: .recent)
+        let request = HttpRequest(url: url,
+                                  method: .get,
+                                  parameters: parameters)
+        let requestResponse: Temperature = try await httpClient.perform(httpRequest: request)
+        return requestResponse
+        
     }
 }

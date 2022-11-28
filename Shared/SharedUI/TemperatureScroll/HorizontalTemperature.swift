@@ -30,9 +30,3 @@ struct HorizontalTemperature: View {
         .padding()
     }
 }
-
-struct BottomTemperatureModel: Identifiable {
-    var id = UUID()
-    let temperature: Int
-    let hour: Int
-}

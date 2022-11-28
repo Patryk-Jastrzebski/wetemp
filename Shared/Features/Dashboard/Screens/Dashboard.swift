@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftUICharts
+import MapKit
 
 struct Dashboard: View {
     @StateObject var viewModel = DashboardViewModelImpl()
@@ -18,13 +19,29 @@ struct Dashboard: View {
             backgroundColor
             VStack(spacing: 5) {
                 temperature
-                temperatureDescription
+                mapButton
                 circularViews
                 Spacer()
             }
             navigation
         }
+        .task {
+           await viewModel.fetchData()
+        }
+        .sheet(isPresented: $viewModel.mapSheet) {
+            MapView()
+        }
         .foregroundColor(.white)
+        .customSheet(isPresented: $viewModel.isBottomSheedMapEnabled, detents: $viewModel.mapDetents, backgroundColor: .white, header: {
+            Capsule()
+                .fill(Color.gray.opacity(0.5))
+                .frame(width: 50, height: 5)
+                .padding(.top)
+                .padding(.bottom, 5)
+        }, scrollViewContent: {}, staticContent: { MapView()
+                .cornerRadius(10)
+                .padding()
+        })
         .customSheet(isPresented: $viewModel.isBottomSheetEnabled, detents: $viewModel.detents, backgroundColor: .white, header: {
             Capsule()
                 .fill(Color.gray.opacity(0.5))
@@ -53,30 +70,38 @@ extension Dashboard {
         }
     }
     
-    // TODO: Remove mocks with API
     private var temperature: some View {
         VStack {
-            Image("sun")
+            viewModel.temperatureIcon
                 .resizable()
                 .scaledToFit()
                 .frame(width: 220)
-            Text("8°")
+                .padding()
+            Text(viewModel.temperautreData.temperature)
                 .font(.system(size: 88))
                 .fontWeight(.medium)
                 .padding(.top, -60)
         }
-        .padding(.top, -10)
+        .padding(.top)
+    }
+    
+    private var mapButton: some View {
+        Button {
+            viewModel.isBottomSheedMapEnabled.toggle()
+        } label: {
+            temperatureDescription
+        }
     }
     
     private var temperatureDescription: some View {
         VStack(spacing: 5) {
-            Text("Katowice")
+            Text(viewModel.temperautreData.localization)
                 .font(.system(size: 24))
                 .fontWeight(.bold)
-            Text("tue., 1.11")
+            Text(viewModel.temperautreData.date)
                 .font(.system(size: 20))
                 .fontWeight(.bold)
-            Text("little windy today, dress warmly")
+            Text(viewModel.temperautreData.description)
                 .font(.system(size: 18))
                 .fontWeight(.semibold)
         }
@@ -84,8 +109,8 @@ extension Dashboard {
     
     private var circularViews: some View {
         HStack(spacing: 30) {
-            CircularProgress(progressValue: 1015, minValue: 950, maxValue: 1050)
-            CircularProgress(progressValue: 87, minValue: 0, maxValue: 100)
+            CircularProgress(progressValue: Float(viewModel.temperautreData.pressure), minValue: 900, maxValue: 1100)
+            CircularProgress(progressValue: Float(viewModel.temperautreData.humidity), minValue: 0, maxValue: 100)
             CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
         }
         .padding()
