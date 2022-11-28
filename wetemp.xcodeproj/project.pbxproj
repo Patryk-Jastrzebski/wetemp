@@ -15,6 +15,9 @@
 		3D5B8AA5291C303200D29EEF /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 3D5B8AA4291C303200D29EEF /* SwiftUICharts */; };
 		3D5B8AA7291C3AD100D29EEF /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B8AA6291C3AD100D29EEF /* Description.swift */; };
 		3D5B8AAA291C42CE00D29EEF /* HorizontalTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5B8AA9291C42CE00D29EEF /* HorizontalTemperature.swift */; };
+		3D61C8CE2934DB88006B2C8F /* BottomTemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */; };
+		3D61C8D02934E099006B2C8F /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8CF2934E099006B2C8F /* Icons.swift */; };
+		3D61C8D22934F188006B2C8F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8D12934F188006B2C8F /* MapView.swift */; };
 		3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */; };
 		3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D042918105C004B56C4 /* HttpClient.swift */; };
 		3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D062918107D004B56C4 /* HttpRequest.swift */; };
@@ -29,7 +32,7 @@
 		3DACF38D2911A11600554177 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF38C2911A11600554177 /* Color+Hex.swift */; };
 		3DACF38F2911A3D800554177 /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF38E2911A3D800554177 /* Gradients.swift */; };
 		3DACF3922911A48300554177 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF3912911A48300554177 /* Constants.swift */; };
-		3DACF39729130EBA00554177 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF39629130EBA00554177 /* BottomSheet.swift */; };
+		3DBD728A2934C23600B6CA73 /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD72892934C23600B6CA73 /* Temperature.swift */; };
 		3DC1BDBB29193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB529193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift */; };
 		3DC1BDBC29193C1E0078FC3A /* CustomHeightDetent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB629193C1E0078FC3A /* CustomHeightDetent.swift */; };
 		3DC1BDBD29193C1E0078FC3A /* CustomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1BDB729193C1E0078FC3A /* CustomSheet.swift */; };
@@ -47,6 +50,9 @@
 		3D5B8AA1291C1C5700D29EEF /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		3D5B8AA6291C3AD100D29EEF /* Description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		3D5B8AA9291C42CE00D29EEF /* HorizontalTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalTemperature.swift; sourceTree = "<group>"; };
+		3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTemperatureModel.swift; sourceTree = "<group>"; };
+		3D61C8CF2934E099006B2C8F /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		3D61C8D12934F188006B2C8F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
 		3D8E1D042918105C004B56C4 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		3D8E1D062918107D004B56C4 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -62,7 +68,7 @@
 		3DACF38C2911A11600554177 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		3DACF38E2911A3D800554177 /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
 		3DACF3912911A48300554177 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3DACF39629130EBA00554177 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		3DBD72892934C23600B6CA73 /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		3DC1BDB529193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeightBottomSheetHandler.swift; sourceTree = "<group>"; };
 		3DC1BDB629193C1E0078FC3A /* CustomHeightDetent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeightDetent.swift; sourceTree = "<group>"; };
 		3DC1BDB729193C1E0078FC3A /* CustomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSheet.swift; sourceTree = "<group>"; };
@@ -154,6 +160,7 @@
 				3DACF38B2911A0CE00554177 /* Extensions */,
 				3DACF3842911A07100554177 /* Features */,
 				3DACF3822911A03F00554177 /* Resources */,
+				3DBD72882934C21F00B6CA73 /* Models */,
 				3DACF37329119EA100554177 /* wetempApp.swift */,
 				3DACF37529119EA100554177 /* ContentView.swift */,
 				3DACF37929119EA300554177 /* Preview Content */,
@@ -174,6 +181,7 @@
 			children = (
 				3DACF37729119EA300554177 /* Assets.xcassets */,
 				3D10FF2029170E6D009C9760 /* Colors.swift */,
+				3D61C8CF2934E099006B2C8F /* Icons.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				3D10FF1D2917080C009C9760 /* CircularProgress.swift */,
+				3D61C8D12934F188006B2C8F /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,9 +254,17 @@
 				3D5B8AA8291C42BB00D29EEF /* TemperatureScroll */,
 				3D5B8AA0291C1C4000D29EEF /* Chart */,
 				3DC1BDB429193BFB0078FC3A /* CustomBottomSheet */,
-				3DACF39629130EBA00554177 /* BottomSheet.swift */,
 			);
 			path = SharedUI;
+			sourceTree = "<group>";
+		};
+		3DBD72882934C21F00B6CA73 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3DBD72892934C23600B6CA73 /* Temperature.swift */,
+				3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3DC1BDB429193BFB0078FC3A /* CustomBottomSheet */ = {
@@ -348,13 +365,15 @@
 				3DACF38F2911A3D800554177 /* Gradients.swift in Sources */,
 				3DC1BDBB29193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift in Sources */,
 				3D10FF2129170E6D009C9760 /* Colors.swift in Sources */,
-				3DACF39729130EBA00554177 /* BottomSheet.swift in Sources */,
 				3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */,
 				3DACF38D2911A11600554177 /* Color+Hex.swift in Sources */,
 				3D8E1D0B29181252004B56C4 /* DashboardViewModel.swift in Sources */,
 				3D8E1D092918109B004B56C4 /* HttpMethod.swift in Sources */,
+				3D61C8CE2934DB88006B2C8F /* BottomTemperatureModel.swift in Sources */,
 				3D5B8AA7291C3AD100D29EEF /* Description.swift in Sources */,
 				3DACF3882911A0A000554177 /* Dashboard.swift in Sources */,
+				3D61C8D22934F188006B2C8F /* MapView.swift in Sources */,
+				3D61C8D02934E099006B2C8F /* Icons.swift in Sources */,
 				3DC1BDC029193C1E0078FC3A /* CustomHeightBottomSheet.swift in Sources */,
 				3DC1BDBF29193C1E0078FC3A /* CustomHeightBottomSheetViewModel.swift in Sources */,
 				3D5B8AAA291C42CE00D29EEF /* HorizontalTemperature.swift in Sources */,
@@ -364,6 +383,7 @@
 				3DACF3922911A48300554177 /* Constants.swift in Sources */,
 				3DC1BDBC29193C1E0078FC3A /* CustomHeightDetent.swift in Sources */,
 				3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */,
+				3DBD728A2934C23600B6CA73 /* Temperature.swift in Sources */,
 				3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */,
 				3D8E1D0E291812AF004B56C4 /* DashboardNetworkService.swift in Sources */,
 				3D5B8AA2291C1C5700D29EEF /* ChartView.swift in Sources */,

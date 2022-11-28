@@ -8,13 +8,11 @@
 import Foundation
 
 enum UrlFeaturePath: String {
-    case temperature = "/temperature"
-    case humidity = "/humidity"
-    case preassure = "/preassure"
+    case recent = "/recent"
 }
 
 struct BaseUrl {
-    private let baseUrl = "todo api url"
+    private let baseUrl = "https://wthstation.bieda.it/api/v1"
     private let featurePath: UrlFeaturePath
     private let url: String
 
