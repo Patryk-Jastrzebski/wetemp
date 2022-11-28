@@ -17,19 +17,11 @@ struct Dashboard: View {
     var body: some View {
         ZStack {
             backgroundColor
-            VStack(spacing: 5) {
-                temperature
-                mapButton
-                circularViews
-                Spacer()
-            }
+            dashBoardContent
             navigation
         }
         .task {
-           await viewModel.fetchData()
-        }
-        .sheet(isPresented: $viewModel.mapSheet) {
-            MapView()
+            await viewModel.fetchData()
         }
         .foregroundColor(.white)
         .customSheet(isPresented: $viewModel.isBottomSheedMapEnabled, detents: $viewModel.mapDetents, backgroundColor: .white, header: {
@@ -57,6 +49,22 @@ struct Dashboard: View {
 }
 
 extension Dashboard {
+    private var dashBoardContent: some View {
+        VStack(spacing: 5) {
+            switch viewModel.viewState {
+            case .loading:
+                EmptyView()
+            case .loaded:
+                temperature
+                mapButton
+                circularViews
+                Spacer()
+            case .error:
+                EmptyView()
+            }
+        }
+    }
+    
     private var navigation: some View {
         VStack {
             HStack {
@@ -77,7 +85,7 @@ extension Dashboard {
                 .scaledToFit()
                 .frame(width: 220)
                 .padding()
-            Text(viewModel.temperautreData.temperature)
+            Text(viewModel.temperautreData.temperature ?? "")
                 .font(.system(size: 88))
                 .fontWeight(.medium)
                 .padding(.top, -60)
@@ -95,13 +103,13 @@ extension Dashboard {
     
     private var temperatureDescription: some View {
         VStack(spacing: 5) {
-            Text(viewModel.temperautreData.localization)
+            Text(viewModel.temperautreData.localization ?? "")
                 .font(.system(size: 24))
                 .fontWeight(.bold)
             Text(viewModel.temperautreData.date)
                 .font(.system(size: 20))
                 .fontWeight(.bold)
-            Text(viewModel.temperautreData.description)
+            Text(viewModel.temperautreData.description ?? "")
                 .font(.system(size: 18))
                 .fontWeight(.semibold)
         }
@@ -109,9 +117,9 @@ extension Dashboard {
     
     private var circularViews: some View {
         HStack(spacing: 30) {
-            CircularProgress(progressValue: Float(viewModel.temperautreData.pressure), minValue: 900, maxValue: 1100)
-            CircularProgress(progressValue: Float(viewModel.temperautreData.humidity), minValue: 0, maxValue: 100)
-            CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
+                CircularProgress(progressValue: viewModel.temperautreData.pressure, minValue: 900, maxValue: 1100)
+                CircularProgress(progressValue: viewModel.temperautreData.humidity, minValue: 0, maxValue: 100)
+                CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
         }
         .padding()
     }
@@ -135,6 +143,6 @@ extension Dashboard {
         } label: {
             Image(systemName: "magnifyingglass")
         }
-
+        
     }
 }
