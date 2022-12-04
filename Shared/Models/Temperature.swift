@@ -8,7 +8,17 @@
 import Foundation
 
 struct Temperature: Decodable {
-    static let base = Temperature(stationId: 0, stationName: "", time: "", date: "", isRaining: nil, temperature: nil, pressure: nil, humidity: nil, localization: nil, lat: 0.0, lon: 0.0, description: nil)
+    static let base = Temperature(stationId: 0,
+                                  stationName: "",
+                                  time: "",
+                                  date: "", isRaining: nil,
+                                  temperature: nil,
+                                  pressure: nil,
+                                  humidity: nil,
+                                  localization: nil,
+                                  lat: 0.0,
+                                  lon: 0.0,
+                                  description: nil)
     
     let stationId: Int
     let stationName: String
