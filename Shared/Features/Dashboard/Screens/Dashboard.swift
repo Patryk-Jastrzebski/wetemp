@@ -20,8 +20,8 @@ struct Dashboard: View {
             dashBoardContent
             navigation
         }
-        .task {
-            await viewModel.fetchData()
+        .onLoad {
+            Task { await viewModel.fetchData() }
         }
         .foregroundColor(.white)
         .customSheet(isPresented: $viewModel.isBottomSheedMapEnabled, detents: $viewModel.mapDetents, backgroundColor: .white, header: {
@@ -139,7 +139,7 @@ extension Dashboard {
     
     private var search: some View {
         NavigationLink {
-            EmptyView()
+            Search()
         } label: {
             Image(systemName: "magnifyingglass")
         }
