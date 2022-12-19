@@ -18,6 +18,8 @@
 		3D61C8CE2934DB88006B2C8F /* BottomTemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */; };
 		3D61C8D02934E099006B2C8F /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8CF2934E099006B2C8F /* Icons.swift */; };
 		3D61C8D22934F188006B2C8F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8D12934F188006B2C8F /* MapView.swift */; };
+		3D6723092950CF710091B84C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6723082950CF710091B84C /* Settings.swift */; };
+		3D67230B2950CF860091B84C /* AppStorageVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67230A2950CF860091B84C /* AppStorageVariables.swift */; };
 		3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */; };
 		3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D042918105C004B56C4 /* HttpClient.swift */; };
 		3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D062918107D004B56C4 /* HttpRequest.swift */; };
@@ -58,6 +60,8 @@
 		3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTemperatureModel.swift; sourceTree = "<group>"; };
 		3D61C8CF2934E099006B2C8F /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		3D61C8D12934F188006B2C8F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3D6723082950CF710091B84C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		3D67230A2950CF860091B84C /* AppStorageVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageVariables.swift; sourceTree = "<group>"; };
 		3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
 		3D8E1D042918105C004B56C4 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		3D8E1D062918107D004B56C4 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
@@ -125,6 +129,14 @@
 			path = TemperatureScroll;
 			sourceTree = "<group>";
 		};
+		3D6723062950CF390091B84C /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				3D6723082950CF710091B84C /* Settings.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		3D8E1D0129180F97004B56C4 /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +159,7 @@
 		3D953AAB293CDCC100375202 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3D6723062950CF390091B84C /* Screen */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -244,17 +257,17 @@
 				3D10FF1F29170C9A009C9760 /* Model */,
 				3DACF38A2911A0AC00554177 /* Views */,
 				3DACF3892911A0A400554177 /* ViewModel */,
-				3DACF3862911A09000554177 /* Screens */,
+				3DACF3862911A09000554177 /* Screen */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		3DACF3862911A09000554177 /* Screens */ = {
+		3DACF3862911A09000554177 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
 				3DACF3872911A0A000554177 /* Dashboard.swift */,
 			);
-			path = Screens;
+			path = Screen;
 			sourceTree = "<group>";
 		};
 		3DACF3892911A0A400554177 /* ViewModel */ = {
@@ -290,6 +303,7 @@
 				3D10FEFF2916B767009C9760 /* BlurView.swift */,
 				3DACF3912911A48300554177 /* Constants.swift */,
 				3D953AB2293CE8E900375202 /* ViewDidLoadModifier.swift */,
+				3D67230A2950CF860091B84C /* AppStorageVariables.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -409,6 +423,7 @@
 				3DC1BDBE29193C1E0078FC3A /* View+CustomSheet.swift in Sources */,
 				3DC1BDBD29193C1E0078FC3A /* CustomSheet.swift in Sources */,
 				3DACF37629119EA100554177 /* ContentView.swift in Sources */,
+				3D6723092950CF710091B84C /* Settings.swift in Sources */,
 				3D10FF002916B767009C9760 /* BlurView.swift in Sources */,
 				3DACF38F2911A3D800554177 /* Gradients.swift in Sources */,
 				3DC1BDBB29193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift in Sources */,
@@ -419,6 +434,7 @@
 				3D8E1D092918109B004B56C4 /* HttpMethod.swift in Sources */,
 				3D61C8CE2934DB88006B2C8F /* BottomTemperatureModel.swift in Sources */,
 				3D5B8AA7291C3AD100D29EEF /* Description.swift in Sources */,
+				3D67230B2950CF860091B84C /* AppStorageVariables.swift in Sources */,
 				3DACF3882911A0A000554177 /* Dashboard.swift in Sources */,
 				3D61C8D22934F188006B2C8F /* MapView.swift in Sources */,
 				3D953AB3293CE8E900375202 /* ViewDidLoadModifier.swift in Sources */,

@@ -131,7 +131,7 @@ extension Dashboard {
     
     private var settings: some View {
         NavigationLink {
-            EmptyView()
+            Settings()
         } label: {
             Image(systemName: "gear")
         }
