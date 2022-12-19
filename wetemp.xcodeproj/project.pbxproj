@@ -31,6 +31,8 @@
 		3D953AB3293CE8E900375202 /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953AB2293CE8E900375202 /* ViewDidLoadModifier.swift */; };
 		3D953AB6293CEA1100375202 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953AB5293CEA1100375202 /* SearchViewModel.swift */; };
 		3D953AB8293CEACD00375202 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D953AB7293CEACD00375202 /* Station.swift */; };
+		3D994A32296383FF006F3823 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D994A31296383FF006F3823 /* Place.swift */; };
+		3D994A3429638696006F3823 /* Historical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D994A3329638696006F3823 /* Historical.swift */; };
 		3DACF37429119EA100554177 /* wetempApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF37329119EA100554177 /* wetempApp.swift */; };
 		3DACF37629119EA100554177 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DACF37529119EA100554177 /* ContentView.swift */; };
 		3DACF37829119EA300554177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DACF37729119EA300554177 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 		3D953AB2293CE8E900375202 /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
 		3D953AB5293CEA1100375202 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3D953AB7293CEACD00375202 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		3D994A31296383FF006F3823 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		3D994A3329638696006F3823 /* Historical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historical.swift; sourceTree = "<group>"; };
 		3DACF37029119EA100554177 /* wetemp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wetemp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DACF37329119EA100554177 /* wetempApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wetempApp.swift; sourceTree = "<group>"; };
 		3DACF37529119EA100554177 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 				3DBD72892934C23600B6CA73 /* Temperature.swift */,
 				3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */,
 				3D953AB7293CEACD00375202 /* Station.swift */,
+				3D994A31296383FF006F3823 /* Place.swift */,
+				3D994A3329638696006F3823 /* Historical.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -422,11 +428,13 @@
 				3D953AB6293CEA1100375202 /* SearchViewModel.swift in Sources */,
 				3DC1BDBE29193C1E0078FC3A /* View+CustomSheet.swift in Sources */,
 				3DC1BDBD29193C1E0078FC3A /* CustomSheet.swift in Sources */,
+				3D994A32296383FF006F3823 /* Place.swift in Sources */,
 				3DACF37629119EA100554177 /* ContentView.swift in Sources */,
 				3D6723092950CF710091B84C /* Settings.swift in Sources */,
 				3D10FF002916B767009C9760 /* BlurView.swift in Sources */,
 				3DACF38F2911A3D800554177 /* Gradients.swift in Sources */,
 				3DC1BDBB29193C1E0078FC3A /* CustomHeightBottomSheetHandler.swift in Sources */,
+				3D994A3429638696006F3823 /* Historical.swift in Sources */,
 				3D10FF2129170E6D009C9760 /* Colors.swift in Sources */,
 				3D8E1D072918107D004B56C4 /* HttpRequest.swift in Sources */,
 				3DACF38D2911A11600554177 /* Color+Hex.swift in Sources */,

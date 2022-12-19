@@ -21,7 +21,9 @@ struct Dashboard: View {
             navigation
         }
         .onLoad {
-            Task { await viewModel.fetchData() }
+            Task { await viewModel.fetchData()
+                print(viewModel.temperautreData)
+            }
         }
         .foregroundColor(.white)
         .customSheet(isPresented: $viewModel.isBottomSheedMapEnabled, detents: $viewModel.mapDetents, backgroundColor: .white, header: {
@@ -30,9 +32,12 @@ struct Dashboard: View {
                 .frame(width: 50, height: 5)
                 .padding(.top)
                 .padding(.bottom, 5)
-        }, scrollViewContent: {}, staticContent: { MapView()
-                .cornerRadius(10)
-                .padding()
+        }, scrollViewContent: {}, staticContent: {
+            if viewModel.temperautreData.lat > 0 {
+                MapView(lat: CGFloat(viewModel.temperautreData.lat), lon: CGFloat(viewModel.temperautreData.lon))
+                    .cornerRadius(10)
+                    .padding()
+            }
         })
         .customSheet(isPresented: $viewModel.isBottomSheetEnabled, detents: $viewModel.detents, backgroundColor: .white, header: {
             Capsule()
@@ -43,7 +48,7 @@ struct Dashboard: View {
         }, scrollViewContent: {
             HorizontalTemperature(temps: viewModel.temperaturesBottomSheet)
                 .padding(.leading, 5)
-            ChartView()
+            ChartView(historical: viewModel.historicalData)
         }, staticContent: {})
     }
 }
@@ -85,7 +90,7 @@ extension Dashboard {
                 .scaledToFit()
                 .frame(width: 220)
                 .padding()
-            Text(viewModel.temperautreData.temperature ?? "")
+            Text(viewModel.temperautreData.temperature ?? "N/A")
                 .font(.system(size: 88))
                 .fontWeight(.medium)
                 .padding(.top, -60)
@@ -117,9 +122,9 @@ extension Dashboard {
     
     private var circularViews: some View {
         HStack(spacing: 30) {
-                CircularProgress(progressValue: viewModel.temperautreData.pressure, minValue: 900, maxValue: 1100)
-                CircularProgress(progressValue: viewModel.temperautreData.humidity, minValue: 0, maxValue: 100)
-                CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
+            CircularProgress(progressValue: viewModel.temperautreData.pressure, minValue: 900, maxValue: 1100)
+            CircularProgress(progressValue: viewModel.temperautreData.humidity, minValue: 0, maxValue: 100)
+            CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
         }
         .padding()
     }

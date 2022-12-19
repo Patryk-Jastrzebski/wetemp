@@ -9,6 +9,7 @@ import Foundation
 
 enum UrlFeaturePath: String {
     case recent = "/recent"
+    case historical = "/historical"
 }
 
 struct BaseUrl {

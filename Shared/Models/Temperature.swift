@@ -18,7 +18,8 @@ struct Temperature: Decodable {
                                   localization: nil,
                                   lat: 0.0,
                                   lon: 0.0,
-                                  description: nil)
+                                  description: nil,
+                                  image: nil)
     
     let stationId: Int
     let stationName: String
@@ -32,6 +33,7 @@ struct Temperature: Decodable {
     let lat: Float
     let lon: Float
     let description: String?
+    let image: Int?
     
     private enum CodingKeys: String, CodingKey {
         case stationId = "station_id"
@@ -46,6 +48,7 @@ struct Temperature: Decodable {
         case lat
         case lon
         case description
+        case image = "img_code"
     }
     
     init(from decoder: Decoder) throws {
@@ -62,6 +65,7 @@ struct Temperature: Decodable {
         lat = try container.decode(Float.self, forKey: .lat)
         lon = try container.decode(Float.self, forKey: .lon)
         description = try container.decodeIfPresent(String.self, forKey: .description)
+        image = try container.decodeIfPresent(Int.self, forKey: .image)
     }
     
     init(stationId: Int,
@@ -75,7 +79,8 @@ struct Temperature: Decodable {
          localization: String?,
          lat: Float,
          lon: Float,
-         description: String?) {
+         description: String?,
+         image: Int?) {
         
         self.stationName = stationName
         self.stationId = stationId
@@ -89,6 +94,7 @@ struct Temperature: Decodable {
         self.lat = lat
         self.lon = lon
         self.description = description
+        self.image = image
     }
 }
 

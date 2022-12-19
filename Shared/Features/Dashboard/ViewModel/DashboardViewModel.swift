@@ -19,6 +19,7 @@ final class DashboardViewModelImpl: ObservableObject, DashboardViewModel {
     @Published var isBottomSheetEnabled = true
     @Published var isBottomSheedMapEnabled = false
     @Published var temperautreData: Temperature = .base
+    @Published var historicalData: [Historical] = [.base]
     @Published var temperatureIcon: Image = Icons.rainSun
     @Published var temperaturesBottomSheet: [BottomTemperatureModel] = []
     @Published var mapSheet: Bool = false
@@ -38,9 +39,11 @@ final class DashboardViewModelImpl: ObservableObject, DashboardViewModel {
         do {
             viewState = .loading
             let data = try await networkService.fetchTemperatureData()
+            let historical = try await networkService.fetchHistorical()
             viewState = .loaded
             withAnimation(.interpolatingSpring(stiffness: 100, damping: 30)) {
                 temperautreData = data
+                historicalData = historical
             }
         } catch {
             viewState = .error
