@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "nightClear.png",
+      "filename" : "Cloudy.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "nightClear2.png",
+      "filename" : "Cloudy 2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "nightClear3.png",
+      "filename" : "Cloudy 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

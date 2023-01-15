@@ -16,4 +16,7 @@ struct Icons {
     static let nightClear: Image = Image("nightClear")
     static let circle: Image = Image(systemName: "circle")
     static let circleFill: Image = Image(systemName: "record.circle")
+    static let pressure: Image = Image("pressure")
+    static let humidity: Image = Image("humidity")
+    static let insolation: Image = Image("insolation")
 }

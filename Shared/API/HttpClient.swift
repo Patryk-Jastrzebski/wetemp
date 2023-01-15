@@ -10,6 +10,8 @@ import Foundation
 enum AppErrors: Error {
     case httpError
     case urlError
+    case badResponse
+    case decodeError
     case keychainError
 }
 

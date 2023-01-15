@@ -8,12 +8,29 @@
 import SwiftUI
 
 final class SearchViewModel: ObservableObject {
+    enum State {
+        case loading, loaded, error
+    }
+    
     @Published var searchPhrase = ""
     @Published var stations = [Station]()
+    @Published var state: State = .loading
     
-    func fetch() {
-        withAnimation {
-            stations = [.base, .base, .base, .base, .base]
+    let networkService: SearchNetworkService
+    
+    init(networkService: SearchNetworkService = SearchNetworkServiceImpl.shared) {
+        self.networkService = networkService
+        
+    }
+    
+    @MainActor
+    func fetch() async {
+        do {
+            state = .loading
+            stations = try await networkService.fetchTemperatureData()
+            state = .loaded
+        } catch {
+            state = .error
         }
     }
 }

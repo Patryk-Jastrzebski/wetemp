@@ -9,22 +9,37 @@ import SwiftUI
 import SwiftUICharts
 
 struct ChartView: View {
+    @AppStorage(AppStorageVariables.chartDays) var chartDays = "7"
+    @AppStorage(AppStorageVariables.temperatureUnit) var temperatureUnit = "c"
     let historical: [Historical]
     var body: some View {
         VStack(spacing: 30) {
-            LineView(data: getTemperature(), title: "Temperature", legend: "last 7 days in Celsius", style: Styles.barChartStyleNeonBlueLight)
+            LineView(data: getTemperature(), title: "Temperature", legend: "last \(chartDays) days in \(getTemperatureUnit())", style: Styles.barChartStyleNeonBlueLight)
                 .frame(height: 350)
-            
-//            Description(title: "Summary of the day", description: "Temperatura odczuwalna w tej chwili to 8°, ale rzeczywista to 9°. Temperatura dziś wahała się pomiędzy 5° a 13°")
-            LineView(data: getHumidity(), title: "Humidity", legend: "last 7 days %, (today: 98%)", style: Styles.barChartStyleOrangeLight)
+            LineView(data: getHumidity(), title: "Humidity", legend: "last \(chartDays) days %", style: Styles.barChartStyleOrangeLight)
                 .frame(height: 350)
-//            Description(title: "Summary of the week", description: "Wilgotność powietrza dziś to 98%. Dzisiejsze wahania to między 90% a 98%.")
-            LineView(data: getPressure(), title: "Pressure", legend: "last 7 days %", style: Styles.barChartStyleOrangeLight)
+            LineView(data: getPressure(), title: "Pressure", legend: "last \(chartDays) days %", style: Styles.barChartStyleOrangeLight)
                 .frame(height: 350)
-//            Description(title: "Summary of the week", description: "Dzisiejsze ciśnienie to 1004 hPa. Wahanie na przestrzeni tygodnia jest między 985 a 1014 hPa.")
+            LineView(data: getIsRaining(), title: "Last \(chartDays) days Raining", legend: "0 - clear, 1 - rain", style: Styles.barChartStyleOrangeLight)
+                .frame(height: 350)
+            LineView(data: getInsolation(), title: "Insolation", legend: "last \(chartDays) days %", style: Styles.barChartStyleOrangeLight)
+                .frame(height: 350)
         }
         .preferredColorScheme(.light)
         .padding()
+    }
+    
+    private func getTemperatureUnit() -> String {
+        switch temperatureUnit {
+        case "c":
+            return "Celsius"
+        case "f":
+            return "Fahrenheit"
+        case "k":
+            return "Kelvin"
+        default:
+            return "-"
+        }
     }
     
     private func getTemperature() -> [Double] {
@@ -32,7 +47,7 @@ struct ChartView: View {
         for history in historical {
             temperatures.append(Double(history.temperature ?? 0))
         }
-        return temperatures
+        return temperatures.reversed()
     }
     
     private func getHumidity() -> [Double] {
@@ -40,7 +55,7 @@ struct ChartView: View {
         for history in historical {
             humidities.append(Double(history.humidity ?? 0))
         }
-        return humidities
+        return humidities.reversed()
     }
     
     private func getPressure() -> [Double] {
@@ -48,6 +63,22 @@ struct ChartView: View {
         for history in historical {
             pressures.append(Double(history.pressure ?? 0))
         }
-        return pressures
+        return pressures.reversed()
+    }
+    
+    private func getIsRaining() -> [Double] {
+        var rainHistory: [Double] = []
+        for history in historical {
+            rainHistory.append(Double(history.isRaining ?? 0))
+        }
+        return rainHistory.reversed()
+    }
+    
+    private func getInsolation() -> [Double] {
+        var insolation: [Double] = []
+        for history in historical {
+            insolation.append(Double(history.insolation ?? 0))
+        }
+        return insolation.reversed()
     }
 }

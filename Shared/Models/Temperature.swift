@@ -12,14 +12,15 @@ struct Temperature: Decodable {
                                   stationName: "",
                                   time: "",
                                   date: "", isRaining: nil,
-                                  temperature: nil,
+                                  temperature: "",
                                   pressure: nil,
                                   humidity: nil,
+                                  insolation: nil,
                                   localization: nil,
                                   lat: 0.0,
                                   lon: 0.0,
                                   description: nil,
-                                  image: nil)
+                                  image: 100)
     
     let stationId: Int
     let stationName: String
@@ -29,11 +30,33 @@ struct Temperature: Decodable {
     let temperature: String?
     let pressure: Float?
     let humidity: Float?
+    let insolation: Float?
     let localization: String?
-    let lat: Float
-    let lon: Float
+    var lat: CGFloat
+    var lon: CGFloat
     let description: String?
     let image: Int?
+    
+    var imageName: String? {
+        switch image {
+        case 0:
+            return "sun"
+        case 1:
+            return "sunAndCloudy"
+        case 2:
+            return "cloudy"
+        case 3:
+            return "rainSun"
+        case 4:
+            return "rainSun"
+        case 5:
+            return "rain"
+        case .none:
+            return nil
+        case .some(_):
+            return ""
+        }
+    }
     
     private enum CodingKeys: String, CodingKey {
         case stationId = "station_id"
@@ -44,6 +67,7 @@ struct Temperature: Decodable {
         case temperature
         case pressure
         case humidity
+        case insolation
         case localization
         case lat
         case lon
@@ -61,9 +85,10 @@ struct Temperature: Decodable {
         temperature = try container.decodeIfPresent(String.self, forKey: .temperature)
         pressure = try container.decodeIfPresent(Float.self, forKey: .pressure)
         humidity = try container.decodeIfPresent(Float.self, forKey: .humidity)
+        insolation = try container.decodeIfPresent(Float.self, forKey: .insolation)
         localization = try container.decodeIfPresent(String.self, forKey: .localization)
-        lat = try container.decode(Float.self, forKey: .lat)
-        lon = try container.decode(Float.self, forKey: .lon)
+        lat = try container.decode(CGFloat.self, forKey: .lat)
+        lon = try container.decode(CGFloat.self, forKey: .lon)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         image = try container.decodeIfPresent(Int.self, forKey: .image)
     }
@@ -76,9 +101,10 @@ struct Temperature: Decodable {
          temperature: String?,
          pressure: Float?,
          humidity: Float?,
+         insolation: Float?,
          localization: String?,
-         lat: Float,
-         lon: Float,
+         lat: CGFloat,
+         lon: CGFloat,
          description: String?,
          image: Int?) {
         
@@ -90,6 +116,7 @@ struct Temperature: Decodable {
         self.temperature = temperature
         self.pressure = pressure
         self.humidity = humidity
+        self.insolation = insolation
         self.localization = localization
         self.lat = lat
         self.lon = lon
