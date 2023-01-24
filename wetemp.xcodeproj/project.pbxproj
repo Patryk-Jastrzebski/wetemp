@@ -18,6 +18,10 @@
 		3D61C8CE2934DB88006B2C8F /* BottomTemperatureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */; };
 		3D61C8D02934E099006B2C8F /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8CF2934E099006B2C8F /* Icons.swift */; };
 		3D61C8D22934F188006B2C8F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61C8D12934F188006B2C8F /* MapView.swift */; };
+		3D65E53729683AF300CC6312 /* SearchNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D65E53629683AF300CC6312 /* SearchNetworkService.swift */; };
+		3D65E53929683FBE00CC6312 /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D65E53829683FBE00CC6312 /* Prediction.swift */; };
+		3D65E53C2968505F00CC6312 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D65E53B2968505F00CC6312 /* LoadingIndicator.swift */; };
+		3D65E53E2968507500CC6312 /* SpinnerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D65E53D2968507500CC6312 /* SpinnerCircle.swift */; };
 		3D6723092950CF710091B84C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6723082950CF710091B84C /* Settings.swift */; };
 		3D67230B2950CF860091B84C /* AppStorageVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D67230A2950CF860091B84C /* AppStorageVariables.swift */; };
 		3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */; };
@@ -62,6 +66,10 @@
 		3D61C8CD2934DB88006B2C8F /* BottomTemperatureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTemperatureModel.swift; sourceTree = "<group>"; };
 		3D61C8CF2934E099006B2C8F /* Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		3D61C8D12934F188006B2C8F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		3D65E53629683AF300CC6312 /* SearchNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworkService.swift; sourceTree = "<group>"; };
+		3D65E53829683FBE00CC6312 /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
+		3D65E53B2968505F00CC6312 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		3D65E53D2968507500CC6312 /* SpinnerCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerCircle.swift; sourceTree = "<group>"; };
 		3D6723082950CF710091B84C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		3D67230A2950CF860091B84C /* AppStorageVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageVariables.swift; sourceTree = "<group>"; };
 		3D8E1D0229180FDA004B56C4 /* BaseUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
@@ -133,6 +141,15 @@
 			path = TemperatureScroll;
 			sourceTree = "<group>";
 		};
+		3D65E53A2968504A00CC6312 /* LoadingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				3D65E53B2968505F00CC6312 /* LoadingIndicator.swift */,
+				3D65E53D2968507500CC6312 /* SpinnerCircle.swift */,
+			);
+			path = LoadingIndicator;
+			sourceTree = "<group>";
+		};
 		3D6723062950CF390091B84C /* Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				3D8E1D0D291812AF004B56C4 /* DashboardNetworkService.swift */,
+				3D65E53629683AF300CC6312 /* SearchNetworkService.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -315,6 +333,7 @@
 		3DACF39529130EA200554177 /* SharedUI */ = {
 			isa = PBXGroup;
 			children = (
+				3D65E53A2968504A00CC6312 /* LoadingIndicator */,
 				3D5B8AA8291C42BB00D29EEF /* TemperatureScroll */,
 				3D5B8AA0291C1C4000D29EEF /* Chart */,
 				3DC1BDB429193BFB0078FC3A /* CustomBottomSheet */,
@@ -330,6 +349,7 @@
 				3D953AB7293CEACD00375202 /* Station.swift */,
 				3D994A31296383FF006F3823 /* Place.swift */,
 				3D994A3329638696006F3823 /* Historical.swift */,
+				3D65E53829683FBE00CC6312 /* Prediction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,13 +473,17 @@
 				3D8E1D052918105C004B56C4 /* HttpClient.swift in Sources */,
 				3DACF37429119EA100554177 /* wetempApp.swift in Sources */,
 				3D10FF1E2917080C009C9760 /* CircularProgress.swift in Sources */,
+				3D65E53929683FBE00CC6312 /* Prediction.swift in Sources */,
+				3D65E53C2968505F00CC6312 /* LoadingIndicator.swift in Sources */,
 				3DACF3922911A48300554177 /* Constants.swift in Sources */,
 				3DC1BDBC29193C1E0078FC3A /* CustomHeightDetent.swift in Sources */,
 				3D8E1D0329180FDA004B56C4 /* BaseUrl.swift in Sources */,
 				3DBD728A2934C23600B6CA73 /* Temperature.swift in Sources */,
 				3D10FF23291710E9009C9760 /* CircularProgressModel.swift in Sources */,
+				3D65E53E2968507500CC6312 /* SpinnerCircle.swift in Sources */,
 				3D953AB1293CE8C000375202 /* View.swift in Sources */,
 				3D953AAF293CDCE500375202 /* Search.swift in Sources */,
+				3D65E53729683AF300CC6312 /* SearchNetworkService.swift in Sources */,
 				3D8E1D0E291812AF004B56C4 /* DashboardNetworkService.swift in Sources */,
 				3D953AB8293CEACD00375202 /* Station.swift in Sources */,
 				3D5B8AA2291C1C5700D29EEF /* ChartView.swift in Sources */,

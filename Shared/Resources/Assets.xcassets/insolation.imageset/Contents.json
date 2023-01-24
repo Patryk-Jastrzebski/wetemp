@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "nightCloudy.png",
+      "filename" : "sun.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "nightCloudy2.png",
+      "filename" : "sun 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "nightCloudy3.png",
+      "filename" : "sun 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +19,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }

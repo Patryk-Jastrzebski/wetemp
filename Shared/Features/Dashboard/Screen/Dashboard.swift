@@ -20,9 +20,12 @@ struct Dashboard: View {
             dashBoardContent
             navigation
         }
-        .onLoad {
-            Task { await viewModel.fetchData()
-                print(viewModel.temperautreData)
+        .task {
+            await viewModel.fetch()
+        }
+        .sheet(isPresented: $viewModel.searchPresented) {
+            Search {
+                Task { await viewModel.fetch() }
             }
         }
         .foregroundColor(.white)
@@ -34,7 +37,7 @@ struct Dashboard: View {
                 .padding(.bottom, 5)
         }, scrollViewContent: {}, staticContent: {
             if viewModel.temperautreData.lat > 0 {
-                MapView(lat: CGFloat(viewModel.temperautreData.lat), lon: CGFloat(viewModel.temperautreData.lon))
+                MapView(lat: $viewModel.temperautreData.lat, lon: $viewModel.temperautreData.lon)
                     .cornerRadius(10)
                     .padding()
             }
@@ -46,8 +49,17 @@ struct Dashboard: View {
                 .padding(.top)
                 .padding(.bottom, 5)
         }, scrollViewContent: {
-            HorizontalTemperature(temps: viewModel.temperaturesBottomSheet)
-                .padding(.leading, 5)
+            switch viewModel.predictionState {
+            case .loaded:
+                HorizontalTemperature(temps: $viewModel.predictionData)
+                    .padding(.leading, 5)
+            case .loading:
+                LoadingIndicator(color: .black)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top)
+            case .error:
+                EmptyView()
+            }
             ChartView(historical: viewModel.historicalData)
         }, staticContent: {})
     }
@@ -85,11 +97,17 @@ extension Dashboard {
     
     private var temperature: some View {
         VStack {
-            viewModel.temperatureIcon
-                .resizable()
-                .scaledToFit()
-                .frame(width: 220)
-                .padding()
+            if let weatherIcon = viewModel.temperautreData.imageName {
+                Image(weatherIcon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 220)
+                    .padding()
+            } else {
+                Image(systemName: "wifi.exclamationmark")
+                    .frame(width: 220, height: 220)
+                    .font(.system(size: 48))
+            }
             Text(viewModel.temperautreData.temperature ?? "N/A")
                 .font(.system(size: 88))
                 .fontWeight(.medium)
@@ -122,9 +140,9 @@ extension Dashboard {
     
     private var circularViews: some View {
         HStack(spacing: 30) {
-            CircularProgress(progressValue: viewModel.temperautreData.pressure, minValue: 900, maxValue: 1100)
-            CircularProgress(progressValue: viewModel.temperautreData.humidity, minValue: 0, maxValue: 100)
-            CircularProgress(progressValue: 18, minValue: 0, maxValue: 24)
+            CircularProgress(progressValue: viewModel.temperautreData.pressure, specifier: viewModel.getSpecifierForPressure(), minValue: viewModel.getMinPressureValue(), maxValue: viewModel.getMaxPressureValue(), image: Icons.pressure, unit: viewModel.getPressureUnitString())
+            CircularProgress(progressValue: viewModel.temperautreData.humidity, minValue: 0, maxValue: 100, image: Icons.humidity, unit: "%")
+            CircularProgress(progressValue: viewModel.temperautreData.insolation, minValue: 0, maxValue: 100, image: Icons.insolation, unit: "%")
         }
         .padding()
     }
@@ -143,11 +161,10 @@ extension Dashboard {
     }
     
     private var search: some View {
-        NavigationLink {
-            Search()
+        Button {
+            viewModel.searchPresented.toggle()
         } label: {
             Image(systemName: "magnifyingglass")
         }
-        
     }
 }

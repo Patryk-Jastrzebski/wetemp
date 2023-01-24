@@ -11,13 +11,12 @@ typealias SimpleAction = () -> Void
 
 struct Settings: View {
     enum UnitAction {
-        case temperature, pressure, speed, precipation
+        case temperature, pressure, days
     }
     @Environment(\.dismiss) var dismiss
-    @AppStorage(AppStorageVariables.temperatureUnit) var temperatureUnit = ""
-    @AppStorage(AppStorageVariables.pressureUnit) var pressureUnit = ""
-    @AppStorage(AppStorageVariables.speedUnit) var speedUnit = ""
-    @AppStorage(AppStorageVariables.precipationUnit) var precipationUnit = ""
+    @AppStorage(AppStorageVariables.temperatureUnit) var temperatureUnit = "c"
+    @AppStorage(AppStorageVariables.pressureUnit) var pressureUnit = "h"
+    @AppStorage(AppStorageVariables.chartDays) var chartDays = "7"
     
     var body: some View {
         ZStack {
@@ -52,6 +51,7 @@ extension Settings {
             subtitle
             tempSettings
             pressureSettings
+            daysSettings
             Spacer()
             submitButton
             Spacer()
@@ -76,15 +76,15 @@ extension Settings {
             HStack(spacing: 25) {
                 settingsButton(action: .temperature,
                                buttonLabel: "C",
-                               unit: TemperatureUnit.celsius.rawValue,
+                               unit: TemperatureUnit.celsius.apiValue,
                                storedValue: temperatureUnit)
                 settingsButton(action: .temperature,
                                buttonLabel: "F",
-                               unit: TemperatureUnit.fahrenheit.rawValue,
+                               unit: TemperatureUnit.fahrenheit.apiValue,
                                storedValue: temperatureUnit)
                 settingsButton(action: .temperature,
                                buttonLabel: "K",
-                               unit: TemperatureUnit.kelvin.rawValue,
+                               unit: TemperatureUnit.kelvin.apiValue,
                                storedValue: temperatureUnit)
                 Spacer()
             }
@@ -100,16 +100,36 @@ extension Settings {
             HStack(spacing: 25) {
                 settingsButton(action: .pressure,
                                buttonLabel: "mBar",
-                               unit: PressureUnit.bar.rawValue,
+                               unit: PressureUnit.mBar.apiValue,
                                storedValue: pressureUnit)
                 settingsButton(action: .pressure,
                                buttonLabel: "bar",
-                               unit: PressureUnit.mBar.rawValue,
+                               unit: PressureUnit.bar.apiValue,
                                storedValue: pressureUnit)
                 settingsButton(action: .pressure,
                                buttonLabel: "psi",
-                               unit: PressureUnit.psi.rawValue,
+                               unit: PressureUnit.psi.apiValue,
                                storedValue: pressureUnit)
+                Spacer()
+            }
+        }
+        .padding()
+    }
+    
+    private var daysSettings: some View {
+        VStack(alignment: .leading) {
+            Text("Chart length")
+                .foregroundColor(.white)
+                .font(.system(size: 18, weight: .semibold))
+            HStack(spacing: 25) {
+                settingsButton(action: .days,
+                               buttonLabel: "7 days",
+                               unit: "7",
+                               storedValue: chartDays)
+                settingsButton(action: .days,
+                               buttonLabel: "30 days",
+                               unit: "30",
+                               storedValue: chartDays)
                 Spacer()
             }
         }
@@ -141,10 +161,8 @@ extension Settings {
                     temperatureUnit = unit
                 case .pressure:
                     pressureUnit = unit
-                case .speed:
-                    speedUnit = unit
-                case .precipation:
-                    pressureUnit = unit
+                case .days:
+                    chartDays = unit
                 }
             } label: {
                 HStack {
@@ -160,7 +178,6 @@ extension Settings {
                         .font(.system(size: 24, weight: .semibold))
                 }
                 .foregroundColor(.white)
-                
             }
         }
     }

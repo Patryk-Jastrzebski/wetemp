@@ -10,6 +10,8 @@ import Foundation
 enum UrlFeaturePath: String {
     case recent = "/recent"
     case historical = "/historical"
+    case list = "/stations"
+    case prediction = "/predictions"
 }
 
 struct BaseUrl {

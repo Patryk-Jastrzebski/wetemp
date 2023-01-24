@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Station {
-    static let base = Station(name: "Nazwa", localization: "Poland, Katowice", temperature: "8°")
+struct Station: Decodable {
+    static let base = Station(id: 1, name: "", localization: "")
     
-    let id = UUID()
+    let uuid = UUID()
+    let id: Int
     let name: String
     let localization: String
-    let temperature: String
 }

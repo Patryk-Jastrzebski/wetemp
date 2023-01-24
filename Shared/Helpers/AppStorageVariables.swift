@@ -12,20 +12,36 @@ struct AppStorageVariables {
     static let pressureUnit = "pressureUnit"
     static let speedUnit = "speedUnit"
     static let precipationUnit = "precipationUnit"
+    static let stationId = "stationId"
+    static let chartDays = "chartDays"
 }
 
 enum TemperatureUnit: String {
     case celsius, fahrenheit, kelvin
+    
+    var apiValue: String {
+        switch self {
+        case .celsius:
+            return "c"
+        case .fahrenheit:
+            return "f"
+        case .kelvin:
+            return "k"
+        }
+    }
 }
 
 enum PressureUnit: String {
     case mBar, bar, psi
-}
-
-enum SpeedUnit: String {
-    case meter, kilometer, mile
-}
-
-enum PrecipationUnit: String {
-    case milimeter, inch
+    
+    var apiValue: String {
+        switch self {
+        case .mBar:
+            return "h"
+        case .bar:
+            return "b"
+        case .psi:
+            return "p"
+        }
+    }
 }

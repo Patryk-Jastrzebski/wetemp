@@ -10,6 +10,9 @@ import SwiftUI
 struct Search: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = SearchViewModel()
+    @AppStorage(AppStorageVariables.stationId) var stationId = 1
+    
+    let action: SimpleAction
 
     var body: some View {
         ZStack {
@@ -25,8 +28,8 @@ struct Search: View {
                 title
             }
         }
-        .onLoad {
-            viewModel.fetch()
+        .task {
+            await viewModel.fetch()
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -34,7 +37,7 @@ struct Search: View {
 
 struct Search_Previews: PreviewProvider {
     static var previews: some View {
-        Search()
+        Search(action: {})
     }
 }
 
@@ -62,22 +65,60 @@ private extension Search {
     
     private var content: some View {
         VStack {
+            searchTextfield
             stationList
         }
     }
     
     private var stationList: some View {
         VStack {
-            List {
-                ForEach(viewModel.stations, id: \.id) { station in
-                    Text(station.localization)
+            ScrollView(.vertical) {
+                LazyVStack {
+                    ForEach(viewModel.stations.filter({ viewModel.searchPhrase.isEmpty ? true : $0.name.lowercased().contains(viewModel.searchPhrase.lowercased())}), id: \.uuid) { station in
+                        Button {
+                            stationId = station.id
+                            action()
+                            dismiss()
+                        } label: {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(station.name)
+                                        .font(.system(size: 24, weight: .bold))
+                                    Text(station.localization)
+                                        .font(.system(size: 20))
+                                }
+                                .padding(.leading)
+                                Spacer()
+                            }
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 75)
+                            .background(.blue)
+                            .cornerRadius(10)
+                            .padding(.horizontal)
+                        }
+                    }
+                    .animation(.default, value: viewModel.searchPhrase)
                 }
-                .listRowSeparator(.hidden)
             }
-            .searchable(text: $viewModel.searchPhrase, placement: .navigationBarDrawer(displayMode: .always))
-            .scrollContentBackground(.hidden)
-            .listStyle(.insetGrouped)
         }
+    }
+    
+    private var searchTextfield: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+            TextField("", text: $viewModel.searchPhrase).placeholder(when: viewModel.searchPhrase.isEmpty) {
+                Text("Search").opacity(0.5)
+            }
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
+            .frame(height: 30)
+            .padding(.leading, 5)
+            .background(.white.opacity(0.2))
+            .cornerRadius(5)
+        }
+        .padding()
+        .foregroundColor(.white)
     }
     
     private var title: some View {

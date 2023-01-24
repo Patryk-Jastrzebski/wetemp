@@ -9,24 +9,57 @@ import SwiftUI
 
 struct HorizontalTemperature: View {
     
-    let temps: [BottomTemperatureModel]
+    @Binding var temps: [Prediction]
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 30) {
-                ForEach(temps, id: \.id) { model in
+                ForEach(temps, id: \.date) { model in
                     VStack(spacing: 15) {
-                        Text(model.hour.description)
-                            .font(.system(size: 14))
-                        Image("Cloudy")
-                            .foregroundColor(.black)
-                        Text("\(model.temperature)°")
-                            .font(.system(size: 20))
+                        date(date: model.date)
+                        image(image: model.imageName)
+                        temperature(temperature: model.temperature)
                     }
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                 }
             }
         }
         .padding()
+    }
+}
+
+extension HorizontalTemperature {
+    @ViewBuilder private func date(date: String?) -> some View {
+        Group {
+            if let date = date {
+                Text(date)
+            } else {
+                Text("---")
+            }
+        }
+        .font(.system(size: 14))
+    }
+    
+    @ViewBuilder private func image(image: String?) -> some View {
+        Group {
+            if let image = image {
+                Image(image)
+            } else {
+                Text("---")
+            }
+        }
+        .font(.system(size: 14))
+    }
+    
+    @ViewBuilder private func temperature(temperature: String?) -> some View {
+        Group {
+            if let temperature = temperature {
+                Text(temperature)
+            } else {
+                Text("---")
+            }
+        }
+        .font(.system(size: 20))
     }
 }
