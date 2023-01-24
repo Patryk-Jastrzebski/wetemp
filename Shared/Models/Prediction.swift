@@ -15,13 +15,13 @@ struct Prediction: Decodable {
     var imageName: String? {
         switch image {
         case 0:
-            return "cloudySheet"
+            return "sunSheet"
         case 1:
-            return "cloudySheet"
+            return "sunSheet"
         case 2:
-            return "cloudySheet"
+            return "sunAndCloudySheet"
         case 3:
-            return "cloudySheet"
+            return "sunAndCloudySheet"
         case 4:
             return "cloudySheet"
         case 5:

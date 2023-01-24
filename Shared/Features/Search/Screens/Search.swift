@@ -74,7 +74,7 @@ private extension Search {
         VStack {
             ScrollView(.vertical) {
                 LazyVStack {
-                    ForEach(viewModel.stations.filter({ viewModel.searchPhrase.isEmpty ? true : $0.name.contains(viewModel.searchPhrase)}), id: \.uuid) { station in
+                    ForEach(viewModel.stations.filter({ viewModel.searchPhrase.isEmpty ? true : $0.name.lowercased().contains(viewModel.searchPhrase.lowercased())}), id: \.uuid) { station in
                         Button {
                             stationId = station.id
                             action()
@@ -125,18 +125,5 @@ private extension Search {
         Text("find more stations")
             .font(.system(size: 24, weight: .semibold))
             .foregroundColor(.white)
-    }
-}
-
-extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
-        }
     }
 }
